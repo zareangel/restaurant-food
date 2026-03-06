@@ -13,3 +13,13 @@ export const saveSale = async (sale) => {
 
   return await response.json();
 };
+const API_URL_SALE_LIST = "http://localhost:8080/api/v3/all"
+
+export const getSaleList = async () => {
+    const response = await fetch(API_URL_SALE_LIST)
+    if (!response.ok) {
+        console.log(response)
+        throw new Error("Failed to fetch products")
+    }
+    return await response.json()
+}

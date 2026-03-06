@@ -2,8 +2,14 @@ import './Navbar.css';
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const logout = () => {
+        localStorage.removeItem("user");
+        window.location.reload();
+    };
     const [isOpen, setIsOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const { cart, increaseQty, decreaseQty, removeFromCart } = useContext(CartContext);
@@ -18,6 +24,7 @@ const Navbar = () => {
             if (el) el.scrollIntoView({ behavior: "smooth" });
         }, 100);
     };
+
     return (
         <nav className="navbar">
 
@@ -30,12 +37,35 @@ const Navbar = () => {
                     <a onClick={() => goToSection("menu")}>Menu</a>
                     <a onClick={() => goToSection("about")}>About</a>
                     <a onClick={() => goToSection("contact")}>Contact</a>
+
                 </div>
 
                 <div className="cart-container">
+                    <div>
+                        {user ? (
+                            <>
+                                <span className="user-email">
+                                    {user.name}
+                                </span>
+
+                                {user?.role === "ADMIN" && (
+                                    <Link to="/admin">Admin</Link>
+
+                                )}
+                                <button onClick={logout} className="logout-btn">
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <Link to="/login" className='login-user'>Login</Link>
+                        )}
+                    </div>
                     <div className="cart-icon" onClick={() => setCartOpen(!cartOpen)}>
 
                         🛒 {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+                    </div>
+                    <div>
+
                     </div>
                     {cartOpen && <div className="cart-overlay" onClick={() => setCartOpen(false)}></div>}
                     <div className={`cart-sidebar ${cartOpen ? "open" : ""}`}>
@@ -89,6 +119,7 @@ const Navbar = () => {
 
 
                 </div>
+
 
                 <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>☰</div>
             </div>

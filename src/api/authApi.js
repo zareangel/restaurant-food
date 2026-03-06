@@ -16,3 +16,26 @@ export const loginRequest = async (email, password) => {
     }
 
 }
+
+// Login
+const API_URL_USER = "http://localhost:8080/api/v1/auth";
+
+export const loginUser = async (email, password) => {
+
+    const response = await fetch(`${API_URL_USER}/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error("Invalid credentials");
+    }
+
+    return await response.json();
+};
