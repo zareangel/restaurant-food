@@ -1,0 +1,16 @@
+.location {
+    padding: 40px 20px;
+    text-align: center;
+    background: #fafafa;
+}
+
+.location h2 {
+    margin-bottom: 10px;
+}
+
+.map-container {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

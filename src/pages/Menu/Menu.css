@@ -1,0 +1,158 @@
+/* CONTENEDOR GENERAL */
+.home-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* TITULO */
+.product-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* GRID RESPONSIVE */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.product-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform .2s ease, box-shadow .2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* IMAGEN */
+.image-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #f7f7f7;
+    
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* INFO */
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* PRICE */
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #111;
+}
+
+/* BOTON */
+.buy-btn {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.buy-btn:hover {
+    background: #333;
+}
+
+/* 📱 MOBILE EXTRA */
+@media (max-width: 480px) {
+    .product-title {
+        font-size: 1.6rem;
+    }
+
+    .image-wrapper {
+        height: 150px;
+    }
+}
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.category-select {
+    margin: 10px 0 20px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.sort-select{
+    margin: 10px 0 20px;
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    background:white;
+    font-size:14px;
+    cursor:pointer;
+    transition:all .2s ease;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* hover elegante */
+
+
+/* focus estilo tienda moderna */
+.sort-select:focus{
+    outline:none;
+    box-shadow:0 0 0 2px rgba(189,31,23,0.15);
+}
+.filters-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.home-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
