@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const Menu = () => {
-    
+
     const [sortOrder, setSortOrder] = useState("default");
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -44,20 +44,17 @@ const Menu = () => {
     });
 
     const sortedProducts = [...filteredProducts].sort((a, b) => {
-        if (sortOrder === "asc") {
-            return a.price - b.price;
-        }
-        if (sortOrder === "desc") {
-            return b.price - a.price;
-        }
-    })
-    
+        if (sortOrder === "asc") return a.price - b.price;
+        if (sortOrder === "desc") return b.price - a.price;
+        return 0;
+    });
+
     return (
-        
-        
+
+
         <section id="menu">
-            
-            
+
+
             <div className='home-container' >
 
                 <h1 className='product-title'>Our Products</h1>
@@ -115,6 +112,12 @@ const Menu = () => {
 
                             <div className='product-info'>
                                 <h2>{product.name}</h2>
+
+                                {/* 👇 AQUÍ CORRECTO */}
+                                <p className="category-tag">
+                                    {product.category?.name}
+                                </p>
+
                                 <p>{product.description}</p>
                                 <p className='price'>${product.price}</p>
 
